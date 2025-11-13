@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Formulario">
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="409dp"
@@ -16,32 +16,38 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="130dp" />
+            android:layout_height="113dp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bienvenido" />
+            android:text="Nombre" />
 
-        <Space
+        <EditText
+            android:id="@+id/txt_nombre"
             android:layout_width="match_parent"
-            android:layout_height="64dp" />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text" />
 
         <TextView
-            android:id="@+id/lbl_perosna"
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="...." />
+            android:text="Apellido" />
 
-        <Space
+        <EditText
+            android:id="@+id/txt_apellido"
             android:layout_width="match_parent"
-            android:layout_height="44dp" />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text" />
 
         <Button
-            android:id="@+id/btn_regresar"
+            android:id="@+id/btn_enviar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Regresar" />
+            android:text="Enviar" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

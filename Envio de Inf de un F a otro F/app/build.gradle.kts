@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mi_sistema"
+    namespace = "com.example.intent"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.mi_sistema"
+        applicationId = "com.example.intent"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -43,10 +43,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
-    // implementar dependencia de Volley implementation("com.android.volley:volley:1.2.1")
-    implementation("com.android.volley:volley:1.2.1")
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
