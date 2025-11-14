@@ -62,6 +62,50 @@ class contacto : AppCompatActivity() {
                 lcajas()
                 acajas()
             }
+            // crear el evento del boton guardar btnguardar
+
+            btnguardar.setOnClickListener{
+
+                //validacion de campos vacios
+                if(txtnombre.text.toString().equals("") || txtapellido.text.toString().equals("")
+                    || txttelefono.text.toString().equals("") || txtcorreo.text.toString().equals(""))
+
+                //crear un toast para mostrar mensaje
+                {
+                    Toast.makeText(applicationContext, "Debe llenar todos los campos", Toast.LENGTH_LONG).show()
+                }
+                // si los campos no estan vacios procedemos a insertar los datos
+                else {
+                    insertar()
+                    lcajas()
+                    bcajas()
+                    bbotones()
+                    btnnuevo.isEnabled=true
+                    consultar()
+                }
+
+            }
+
+            // crear el evento del boton cancelar btncancelar
+            btncancelar.setOnClickListener {
+                // llamar a la funcion bbotones
+                bbotones()
+                // llamar a la funcion lcajas y acajas
+                lcajas()
+                bcajas()
+                btnnuevo.isEnabled=true
+
+            }
+            // crear la lista lvllistar
+            lvllistar.setOnItemClickListener { adapterView, view, i, l ->
+                // llamar a la funcion bbotones ->
+                bbotones()
+                btncancelar.isEnabled=true
+                btneliminar.isEnabled=true
+                btnactualizar.isEnabled=true
+                consultarDato(codigos[i])
+
+            }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -114,7 +158,7 @@ class contacto : AppCompatActivity() {
         txttelefono.isEnabled=true
         txtcorreo.isEnabled=true
     }
-    // crear la funcion consultar
+    // crear la funcion consultar para listar los contactos
     fun consultar(){
         val al= ArrayList<String>()
         var url="http://10.0.2.2:8080/WSAGENDA26/datos/contacto.php"
@@ -141,6 +185,83 @@ class contacto : AppCompatActivity() {
                     else
                     {
                         Toast.makeText(applicationContext, "Usuario o clave incorrecta", Toast.LENGTH_LONG).show()
+                    }
+                }
+                catch (e: JSONException)
+                {
+                    Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_LONG).show()
+                }
+            }, {
+                    volleyError -> Toast.makeText(applicationContext, volleyError.message, Toast.LENGTH_LONG).show()
+
+            })
+        rq.add(jsor)
+    }
+    // crear la funcion insertar o guardar del button guardar los contactos
+    fun insertar(){
+
+        var url="http://10.0.2.2:8080/WSAGENDA26/datos/contacto.php"
+        val datos= JSONObject()
+
+        datos.put("accion","insertar")
+        datos.put("cod_persona", txtcodigo.text.toString())
+        datos.put("nombre", txtnombre.text.toString())
+        datos.put("apellido", txtapellido.text.toString())
+        datos.put("telefono", txttelefono.text.toString())
+        datos.put("correo", txtcorreo.text.toString())
+
+
+        val rq= Volley.newRequestQueue(this)
+        val jsor= JsonObjectRequest(Request.Method.POST,url,datos,
+            {s->
+                try {
+
+                    val obj=(s)
+                    if(obj.getBoolean("estado")){
+                        Toast.makeText(applicationContext, obj.getString("mensaje"), Toast.LENGTH_LONG).show()
+                    }
+                    else
+                    {
+                        Toast.makeText(applicationContext, obj.getString("mensaje"), Toast.LENGTH_LONG).show()
+                    }
+                }
+                catch (e: JSONException)
+                {
+                    Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_LONG).show()
+                }
+            }, {
+                    volleyError -> Toast.makeText(applicationContext, volleyError.message, Toast.LENGTH_LONG).show()
+
+            })
+        rq.add(jsor)
+    }
+
+    // crear la funcion consultarDato para listar los contactos
+    fun consultarDato(codigo: String){
+
+        var url="http://10.0.2.2:8080/WSAGENDA26/datos/contacto.php"
+        val datos= JSONObject()
+
+        datos.put("accion","consultarDato")
+        datos.put("cod_contacto", codigo)
+
+        val rq= Volley.newRequestQueue(this)
+        val jsor= JsonObjectRequest(Request.Method.POST,url,datos,
+            {s->
+                try {
+
+                    val obj=(s)
+                    if(obj.getBoolean("estado"))
+                    {
+                        val dato=obj.getJSONObject("contacto")
+                        txtnombre.setText(dato.getString("nom_contacto"))
+                        txtapellido.setText(dato.getString("ape_contacto"))
+                        txttelefono.setText(dato.getString("telefono_contacto"))
+                        txtcorreo.setText(dato.getString("email_contacto"))
+                    }
+                    else
+                    {
+                        Toast.makeText(applicationContext, obj.getString("mensaje"), Toast.LENGTH_LONG).show()
                     }
                 }
                 catch (e: JSONException)

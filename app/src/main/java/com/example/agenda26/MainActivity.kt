@@ -42,11 +42,11 @@ class MainActivity : AppCompatActivity() {
             val jsor= JsonObjectRequest(Request.Method.POST,url,datos,
                 {s->
                     try {
-                        /*Para llamar al segundo formulario*/
+                        //Para llamar al segundo formulario
                         val obj=(s)
                         if(obj.getBoolean("estado")){
                             val codigo=obj.getString("codigo")
-                            /*Toast.makeText(applicationContext, "Ingreso", Toast.LENGTH_LONG).show()*/
+
                             val f= Intent(this, contacto::class.java)
                                 f.putExtra("cod_persona",codigo)
                                 startActivity(f)
