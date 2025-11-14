@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
                             val codigo=obj.getString("codigo")
 
                             val f= Intent(this, contacto::class.java)
-                                f.putExtra("cod_persona",codigo)
-                                startActivity(f)
+                            f.putExtra("cod_persona",codigo)
+                            startActivity(f)
                         }
                         else
                         {
@@ -66,6 +66,12 @@ class MainActivity : AppCompatActivity() {
                 })
             rq.add(jsor)
 
+        }
+
+        // generar la accion boton de registro con setOnclickListener
+        btnregistro.setOnClickListener{
+            val FormularioRegistro= Intent(this, registro_persona::class.java)
+            startActivity(FormularioRegistro)
         }
 
 
