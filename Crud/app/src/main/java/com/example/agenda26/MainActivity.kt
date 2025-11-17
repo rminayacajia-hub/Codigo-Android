@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         var txtcla=findViewById<EditText>(R.id.txt_cla)
         var btningresar=findViewById<Button>(R.id.btn_ingreso)
         var btnregistro=findViewById<Button>(R.id.btn_registro)
+        var btnrecuperarcontrasena=findViewById<Button>(R.id.btn_recuperar_contrasena)
+
 
         // generar la accion boton de ingresar con setOnclickListener
 
@@ -72,6 +74,12 @@ class MainActivity : AppCompatActivity() {
         btnregistro.setOnClickListener{
             val FormularioRegistro= Intent(this, registro_persona::class.java)
             startActivity(FormularioRegistro)
+        }
+
+        // generar la accion boton de recuperar contraseña con setOnclickListener
+        btnrecuperarcontrasena.setOnClickListener{
+            val FormularioRecuperarContrasena= Intent(this, recuperar_clave::class.java)
+            startActivity(FormularioRecuperarContrasena)
         }
 
 
