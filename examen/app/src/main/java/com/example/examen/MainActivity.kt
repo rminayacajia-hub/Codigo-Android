@@ -16,7 +16,7 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
-    // variable para la conexion a mysql con php var url="http://10.0.2.2:8080/WSAGENDA26/datos/persona.php"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,22 +26,6 @@ class MainActivity : AppCompatActivity() {
         val btningresar = findViewById<Button>(R.id.btn_ingreso)
         val txtusu = findViewById<EditText>(R.id.txt_usu)
         val txtcla = findViewById<EditText>(R.id.txt_clave)
-        val btnmenuprincipal = findViewById<Button>(R.id.btn_menuprincipal)
-        val btnperfilusuario = findViewById<Button>(R.id.btn_perfilusuari)
-
-
-
-        // generar la accion boton de perfilusuario con setOnclickListen
-
-        btnperfilusuario.setOnClickListener{
-            val FormularioRegistro= Intent(this, perfilusuario::class.java)
-            startActivity(FormularioRegistro)
-        }
-
-        btnmenuprincipal.setOnClickListener{
-            val FormularioRegistro= Intent(this, menuprincipal::class.java)
-            startActivity(FormularioRegistro)
-        }
 
 
         btningresar.setOnClickListener{
@@ -60,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                         if(obj.getBoolean("estado")){
                             val codigo=obj.getString("codigo")
 
-                            val f= Intent(this, validacion_campos::class.java)
+                            val f= Intent(this, menuprincipal::class.java)
                             f.putExtra("cod_persona",codigo)
                             startActivity(f)
                         }
@@ -80,12 +64,6 @@ class MainActivity : AppCompatActivity() {
             rq.add(jsor)
 
         }
-
-
-
-
-
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

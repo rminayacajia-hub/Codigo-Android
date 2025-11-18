@@ -5,6 +5,86 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".perfilusuario">
+
+    <EditText
+        android:id="@+id/txt_ci_persona"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="CI"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txt_nom_persona"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_marginTop="32dp"/>
+
+    <EditText
+        android:id="@+id/txt_nom_persona"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nombre"
+        app:layout_constraintTop_toBottomOf="@id/txt_ci_persona"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txt_ape_persona"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/txt_ape_persona"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Apellido"
+        app:layout_constraintTop_toBottomOf="@id/txt_nom_persona"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txt_correo_persona"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/txt_correo_persona"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Correo electrónico"
+        android:inputType="textEmailAddress"
+        app:layout_constraintTop_toBottomOf="@id/txt_ape_persona"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txt_clave_persona"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/txt_clave_persona"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Clave"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/txt_correo_persona"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_guardar"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/btn_guardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar Cambios"
+        app:layout_constraintTop_toBottomOf="@id/txt_clave_persona"
+        app:layout_constraintEnd_toStartOf="@+id/btn_regresar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:layout_marginTop="32dp"/>
+
+    <Button
+        android:id="@+id/btn_regresar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Regresar"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="@id/btn_guardar"
+        app:layout_constraintStart_toEndOf="@id/btn_guardar"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
