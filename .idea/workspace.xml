@@ -21,12 +21,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f6e89e3-b667-4983-9ee9-f34a1cbe216c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mi_sistema/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mi_sistema/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mi_sistema/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mi_sistema/.idea/misc.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1f6e89e3-b667-4983-9ee9-f34a1cbe216c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +30,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\rminaya\.android\avd\Medium_Phone.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -61,6 +56,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "rminayacajia-hub"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/rminayacajia-hub/Codigo-Android.git",
+    "accountId": "c178fbe8-56e6-450d-ab50-5314456921b5"
+  }
+}]]></component>
   <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="C:\Users\rminaya\.gradle\wrapper\dists\gradle-8.13-bin\5xuhj0ry160q40clulazy9h7d\gradle-8.13" javaHome="C:\Program Files\Android\Android Studio\jbr" gradleVersion="8.13" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
