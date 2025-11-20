@@ -1,0 +1,7 @@
+{
+  "name": "Holamundo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
