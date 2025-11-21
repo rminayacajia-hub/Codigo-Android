@@ -61,7 +61,7 @@ export class HomePage {
       return;
     }
 
-    // Si no hay valor aún, comienza en "0."
+    // Si no hay valor aún, comienza en "0. hasta que ingrese uno" 
     if (!this.valorActual) {
       this.valorActual = '0.';
       return;
