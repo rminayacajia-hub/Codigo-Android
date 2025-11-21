@@ -1,0 +1,146 @@
+<!-- Encabezado principal de la página con el título de la aplicación -->
+<ion-header [translucent]="true">
+  <!-- Barra de herramientas de Ionic dentro del header -->
+  <ion-toolbar>
+    <!-- Título que se muestra en la parte superior -->
+    <ion-title>
+      Mi Calculador
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenido principal de la pantalla -->
+<ion-content [fullscreen]="true">
+  <!-- Contenedor que centra la calculadora en la pantalla -->
+  <div class="calculator-container">
+    <!-- Tarjeta que envuelve toda la calculadora -->
+    <ion-card class="calculator-card">
+      <!-- Encabezado de la tarjeta -->
+      <ion-card-header>
+        <!-- Título de la tarjeta, enlazado a la propiedad 'titulo' del componente -->
+        <ion-card-title>
+          {{ titulo }}
+        </ion-card-title>
+      </ion-card-header>
+
+      <!-- Contenido principal de la calculadora (display y botones) -->
+      <ion-card-content>
+        <!-- Sección de display donde se ve la operación y el resultado -->
+        <div class="display">
+          <!-- Muestra la operación actual (por ejemplo: 5 +) -->
+          <div class="operation">{{ operacionActual }}</div>
+          <!-- Muestra el valor actual o 0 si está vacío -->
+          <div class="result">{{ valorActual || '0' }}</div>
+        </div>
+
+        <!-- Contenedor general de la grilla de botones -->
+        <div class="buttons-grid">
+          <!-- Primera fila: controles especiales y operaciones avanzadas -->
+          <div class="row">
+            <!-- Botón CE: limpia todo (memoria y valor actual) -->
+            <ion-button color="medium" expand="block" (click)="onClearEntry()">CE</ion-button>
+            <!-- Botón flecha: borra el último dígito del valor actual -->
+            <ion-button color="medium" expand="block" (click)="onBackspace()">&larr;</ion-button>
+            <!-- Botón raíz cuadrada: operación unaria sobre el valor actual -->
+            <ion-button color="tertiary" expand="block" (click)="onUnaryOperation('sqrt')">√</ion-button>
+            <!-- Botón de potenciación: define operador de potencia x^y -->
+            <ion-button color="tertiary" expand="block" (click)="onBinaryOperation('pow')">xʸ</ion-button>
+          </div>
+
+          <!-- Segunda fila: dígitos 7, 8, 9 y división -->
+          <div class="row">
+            <!-- Cada botón numérico agrega el dígito correspondiente -->
+            <ion-button expand="block" (click)="onDigit('7')">7</ion-button>
+            <ion-button expand="block" (click)="onDigit('8')">8</ion-button>
+            <ion-button expand="block" (click)="onDigit('9')">9</ion-button>
+            <!-- Botón división: operador binario '/' -->
+            <ion-button color="tertiary" expand="block" (click)="onBinaryOperation('/')">÷</ion-button>
+          </div>
+
+          <!-- Tercera fila: dígitos 4, 5, 6 y multiplicación -->
+          <div class="row">
+            <ion-button expand="block" (click)="onDigit('4')">4</ion-button>
+            <ion-button expand="block" (click)="onDigit('5')">5</ion-button>
+            <ion-button expand="block" (click)="onDigit('6')">6</ion-button>
+            <!-- Botón multiplicación: operador binario '*' -->
+            <ion-button color="tertiary" expand="block" (click)="onBinaryOperation('*')">×</ion-button>
+          </div>
+
+          <!-- Cuarta fila: dígitos 1, 2, 3 y resta -->
+          <div class="row">
+            <ion-button expand="block" (click)="onDigit('1')">1</ion-button>
+            <ion-button expand="block" (click)="onDigit('2')">2</ion-button>
+            <ion-button expand="block" (click)="onDigit('3')">3</ion-button>
+            <!-- Botón resta: operador binario '-' -->
+            <ion-button color="tertiary" expand="block" (click)="onBinaryOperation('-')">-</ion-button>
+          </div>
+
+          <!-- Quinta fila: dígito 0, decimal, igual y suma -->
+          <div class="row">
+            <ion-button expand="block" (click)="onDigit('0')">0</ion-button>
+            <!-- Botón para agregar separador decimal al número actual -->
+            <ion-button expand="block" (click)="onDecimal()">,</ion-button>
+            <!-- Botón igual: ejecuta el cálculo con el operador seleccionado -->
+            <ion-button color="success" expand="block" (click)="onEquals()">=</ion-button>
+            <!-- Botón suma: operador binario '+' -->
+            <ion-button color="tertiary" expand="block" (click)="onBinaryOperation('+')">+</ion-button>
+          </div>
+        </div>
+
+        <!-- Sección para acciones adicionales, como abrir el modal de historial -->
+        <div class="extra-actions">
+          <!-- Botón que abre el modal de historial de operaciones -->
+          <ion-button fill="outline" expand="block" (click)="abrirModal()">
+            Ver historial de operaciones
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Componente Toast de Ionic para mostrar mensajes cortos (errores o avisos).
+       - [isOpen] enlaza a la propiedad 'toastOpen' para mostrar/ocultar el Toast.
+       - [message] muestra el texto de 'toastMessage'.
+       - duration define cuánto tiempo permanece visible.
+       - (didDismiss) se ejecuta al cerrarse el Toast y resetea 'toastOpen'. -->
+  <ion-toast
+    [isOpen]="toastOpen"
+    [message]="toastMessage"
+    duration="2000"
+    (didDismiss)="toastOpen = false">
+  </ion-toast>
+
+  <!-- Modal de Ionic que muestra el historial de operaciones realizadas -->
+  <ion-modal [isOpen]="modalAbierto" (didDismiss)="cerrarModal()">
+    <!-- Plantilla de contenido interno del modal de historial -->
+    <ng-template>
+      <!-- Encabezado del modal con título y botones de acciones -->
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Historial de operaciones</ion-title>
+          <!-- Botones alineados al extremo derecho del toolbar -->
+          <ion-buttons slot="end">
+            <!-- Botón para limpiar todo el historial -->
+            <ion-button color="danger" (click)="historial = []">Limpiar</ion-button>
+            <!-- Botón para cerrar el modal manualmente -->
+            <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <!-- Contenido del modal con la lista de operaciones realizadas -->
+      <ion-content class="ion-padding">
+        <h2>Historial</h2>
+        <!-- Mensaje cuando no hay operaciones registradas -->
+        <p *ngIf="historial.length === 0">
+          No hay operaciones registradas todavía.
+        </p>
+        <!-- Lista de operaciones del historial (se muestra la más reciente primero) -->
+        <ion-list *ngIf="historial.length > 0">
+          <ion-item *ngFor="let item of historial">
+            <ion-label>{{ item }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

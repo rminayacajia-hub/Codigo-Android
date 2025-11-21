@@ -1,0 +1,55 @@
+/* Contenedor principal que centra la calculadora vertical y horizontalmente */
+.calculator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 16px;
+}
+
+/* Tarjeta que contiene todo el contenido de la calculadora */
+.calculator-card {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Área del display donde se muestran operación y resultado */
+.display {
+  background: #1e1e1e;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  text-align: right;
+}
+
+/* Línea superior del display: muestra la operación actual (ej: 5 +) */
+.display .operation {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Línea inferior del display: muestra el resultado o el número que se está escribiendo */
+.display .result {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Contenedor de todas las filas de botones de la calculadora */
+.buttons-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Cada fila organiza 4 botones en una grilla */
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+/* Sección inferior que contiene el botón de acciones extra (ayuda) */
+.extra-actions {
+  margin-top: 16px;
+}
