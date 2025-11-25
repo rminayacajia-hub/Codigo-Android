@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Calculadora
+      Calculadora Personal
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -63,13 +63,17 @@
              <ion-button color="tertiary" expand="block" (click)="onBinaryOperation('-')">−</ion-button>
            </div>
 
-           <!-- Fila 5 dentro de un div para el número 0, decimal, igual y suma -->
-           <div class="row">
-             <ion-button expand="block" class="btn zero" (click)="onDigit('0')">0</ion-button>
-             <ion-button expand="block" class="btn" (click)="onDigit('.')">.</ion-button>
-             <ion-button expand="block" class="btn operator" (click)="onBinaryOperation('=')">=</ion-button>
-             <ion-button color="tertiary" expand="block" (click)="onBinaryOperation('+')">+</ion-button>
-           </div>
+           <!-- Fila 5 dentro de un div para el número 0, decimal y suma -->
+          <div class="row">
+            <ion-button expand="block" class="btn zero" (click)="onDigit('0')">0</ion-button>
+            <ion-button expand="block" class="btn" (click)="OnDecimal('.')">,</ion-button>
+            <ion-button color="tertiary" expand="block" (click)="onBinaryOperation('+')">+</ion-button>
+          </div>
+
+          <!-- Nueva fila: el botón de igual ocupa el 100% del ancho de la calculadora -->
+          <div class="row">
+            <ion-button expand="block" class="btn operator equal-full" (click)="OnEquals()">=</ion-button>
+          </div>
         </div>
         <!--Seccion para abrir el modal con un div-->
         <div class="extra-actions">

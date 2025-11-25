@@ -127,6 +127,11 @@
   --background: #020617;
 }
 
+// El botón de igual a ancho completo (ocupa las 4 columnas de la fila)
+.row .btn.equal-full {
+  grid-column: span 4;
+}
+
 .extra-actions {
   margin-top: 12px;
 }
