@@ -1,0 +1,171 @@
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+// Estilos de la calculadora
+.calculator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  min-height: 100%;
+  background: radial-gradient(circle at top, #1d4ed8 0, #020617 55%, #000 100%);
+}
+
+.calculator-card {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #020617, #0f172a);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+}
+
+.calculator-card ion-card-header {
+  background: linear-gradient(90deg, #22c55e, #3b82f6);
+  color: #0f172a;
+}
+
+.calculator-card ion-card-title {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.display {
+  background: linear-gradient(180deg, #020617, #020617);
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  color: #e5e7eb;
+  text-align: right;
+  font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.18);
+}
+
+.display .operacion {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  min-height: 1.2em;
+  word-wrap: break-word;
+}
+
+.display .resultado {
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.buttons-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.row .zero {
+  grid-column: span 2;
+}
+
+.row ion-button {
+  --border-radius: 999px;
+  --box-shadow: none;
+  --background: #111827;
+  --background-activated: #020617;
+  --background-hover: #0b1120;
+  --color: #e5e7eb;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.row ion-button[ng-reflect-color="tertiary"],
+.row ion-button[color="tertiary"] {
+  --background: linear-gradient(135deg, #22c55e, #16a34a);
+  --background-activated: #15803d;
+  --background-hover: #16a34a;
+  --color: #052e16;
+}
+
+.row ion-button.operator,
+.row .btn.operator {
+  --background: linear-gradient(135deg, #f97316, #ea580c);
+  --background-activated: #c2410c;
+  --background-hover: #f97316;
+  --color: #1f2937;
+}
+
+.row .btn.zero {
+  --background: #020617;
+}
+
+.extra-actions {
+  margin-top: 12px;
+}
+
+.extra-actions ion-button {
+  --background: transparent;
+  --border-radius: 999px;
+  --border-color: rgba(148, 163, 184, 0.5);
+  --border-style: solid;
+  --border-width: 1px;
+  --color: #e5e7eb;
+}
+
+// Estilo del modal de historial
+ion-modal {
+  --backdrop-opacity: 0.45;
+}
+
+ion-modal ion-content {
+  --background: #020617;
+  color: #e5e7eb;
+}
+
+ion-modal ion-toolbar {
+  --background: linear-gradient(90deg, #0ea5e9, #6366f1);
+  --color: #020617;
+}
+
+ion-modal h2 {
+  margin-top: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+ion-modal p {
+  color: #9ca3af;
+}
+
+ion-modal ion-item {
+  --background: transparent;
+  --color: #e5e7eb;
+}

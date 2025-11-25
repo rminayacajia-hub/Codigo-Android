@@ -1,0 +1,7 @@
+{
+  "name": "mi-calculadora",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
