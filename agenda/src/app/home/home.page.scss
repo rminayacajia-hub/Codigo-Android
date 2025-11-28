@@ -1,27 +1,412 @@
-#container {
+// Variables
+:root {
+  --ion-color-primary: #3880ff;
+  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3171e0;
+  --ion-color-primary-tint: #4c8dff;
+  
+  --ion-color-secondary: #3dc2ff;
+  --ion-color-secondary-rgb: 61, 194, 255;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #36abe0;
+  --ion-color-secondary-tint: #50c8ff;
+  
+  --ion-color-tertiary: #5260ff;
+  --ion-color-success: #2dd36f;
+  --ion-color-warning: #ffc409;
+  --ion-color-danger: #eb445a;
+  --ion-color-dark: #222428;
+  --ion-color-medium: #92949c;
+  --ion-color-light: #f4f5f8;
+  
+  --ion-background-color: #f8f9fe;
+  --ion-toolbar-background: var(--ion-color-primary);
+  --ion-toolbar-color: white;
+  
+  --ion-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+// Global styles
+:host {
+  --ion-background-color: #f8f9fe;
+  --ion-text-color: #2c3e50;
+}
+
+// Header styles
+.app-header {
+  --background: var(--ion-color-primary);
+  --color: white;
+  
+  .header-toolbar {
+    --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+    --color: white;
+    --border-style: none;
+    --min-height: 70px;
+    
+    .app-title {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.4rem;
+      
+      .title-icon {
+        margin-right: 10px;
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+
+// Content styles
+.app-content {
+  --background: var(--ion-background-color);
+  --padding-top: 20px;
+  --padding-bottom: 40px;
+  --padding-start: 24px;
+  --padding-end: 24px;
+}
+
+.login-container {
+  max-width: 500px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+// Welcome section
+.welcome-section {
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  margin-bottom: 30px;
+  
+  .welcome-text {
+    color: var(--ion-color-medium);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0 0 5px;
+  }
+  
+  .app-name {
+    color: var(--ion-color-primary);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 10px;
+    line-height: 1.2;
+  }
+  
+  .app-description {
+    color: var(--ion-color-medium);
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.8;
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+// Login card
+.login-card {
+  border-radius: 16px;
+  margin: 0 0 25px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(var(--ion-color-primary-rgb), 0.1);
+  overflow: hidden;
+  
+  .card-header {
+    background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+    color: white;
+    padding: 24px 20px;
+    text-align: center;
+    
+    .card-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    
+    ion-card-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+    }
+  }
+  
+  .card-content {
+    padding: 20px 20px 30px;
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+// Form styles
+.form-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --border-color: transparent;
+  --highlight-color-focused: var(--ion-color-primary);
+  --highlight-color-valid: var(--ion-color-success);
+  --highlight-color-invalid: var(--ion-color-danger);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  
+  &:focus-within {
+    --background: rgba(var(--ion-color-primary-rgb), 0.02);
+  }
+  
+  .input-icon {
+    color: var(--ion-color-primary);
+    font-size: 1.2rem;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+  
+  .input-label {
+    color: var(--ion-color-medium);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-input {
+    --background: #f5f7ff;
+    --color: var(--ion-color-dark);
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    --placeholder-color: var(--ion-color-medium);
+    --placeholder-opacity: 0.7;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    
+    &:focus {
+      --background: #edf0ff;
+      box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.12);
+    }
+    
+    &.ion-valid {
+      --background: #f0f9f5;
+      --color: var(--ion-color-success);
+    }
+    
+    &.ion-invalid.ion-touched {
+      --background: #fff0f2;
+      --color: var(--ion-color-danger);
+    }
+  }
+  
+  &.item-has-focus .input-label,
+  &.item-has-value .input-label {
+    color: var(--ion-color-primary);
+    transform: translateY(-5px);
+    font-size: 0.8rem;
+  }
 }
 
-#container a {
-  text-decoration: none;
+// Button styles
+.login-button {
+  --background: var(--ion-color-primary);
+  --background-hover: var(--ion-color-primary-shade);
+  --background-activated: var(--ion-color-primary-shade);
+  --background-focused: var(--ion-color-primary-shade);
+  --color: white;
+  --padding-top: 18px;
+  --padding-bottom: 18px;
+  --border-radius: 10px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  margin: 30px 0 10px;
+  box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.3);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(var(--ion-color-primary-rgb), 0.4);
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(var(--ion-color-primary-rgb), 0.3);
+  }
+  
+  ion-icon {
+    font-size: 1.2rem;
+    margin-right: 8px;
+  }
+}
+
+// Action links
+.action-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  
+  .action-button {
+    --color: var(--ion-color-medium);
+    --color-hover: var(--ion-color-primary);
+    --background-hover: transparent;
+    --background-activated: transparent;
+    --background-focused: transparent;
+    --ripple-color: var(--ion-color-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: none;
+    margin: 5px 10px;
+    transition: all 0.3s ease;
+    
+    ion-icon {
+      font-size: 1rem;
+      margin-right: 5px;
+    }
+    
+    &:hover {
+      --color: var(--ion-color-primary);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Loading indicator
+ion-loading {
+  --background: rgba(0, 0, 0, 0.7);
+  --spinner-color: var(--ion-color-primary);
+  --color: white;
+  
+  .loading-wrapper {
+    border-radius: 12px;
+    padding: 25px;
+    background: white;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    
+    .loading-content {
+      font-weight: 500;
+      color: var(--ion-color-dark);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .app-header .header-toolbar .app-title {
+    font-size: 1.2rem;
+    
+    .title-icon {
+      font-size: 1.4rem;
+    }
+  }
+  
+  .welcome-section {
+    .welcome-text {
+      font-size: 1.1rem;
+    }
+    
+    .app-name {
+      font-size: 1.8rem;
+    }
+  }
+  
+  .login-card {
+    .card-header .card-title {
+      font-size: 1.4rem;
+    }
+    
+    .card-content {
+      padding: 15px 15px 25px;
+    }
+  }
+  
+  .form-item {
+    margin-bottom: 15px;
+    
+    .custom-input {
+      --padding-start: 12px;
+      --padding-end: 12px;
+      --padding-top: 10px;
+      --padding-bottom: 10px;
+    }
+  }
+  
+  .login-button {
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+    margin: 25px 0 8px;
+  }
+  
+  .action-links {
+    flex-direction: column;
+    align-items: center;
+    
+    .action-button {
+      margin: 5px 0;
+    }
+  }
+}
+
+ion-button {
+  --border-radius: 8px;
+  margin: 20px 0;
+  height: 48px;
+  font-weight: 600;
+  text-transform: none;
+  --ion-color-base: var(--ion-color-success);
+}
+
+table {
+  width: 100%;
+  margin: 20px 0;
+  
+  td {
+    text-align: center;
+    padding: 8px;
+    
+    .opciones {
+      color: var(--ion-color-primary);
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      
+      &:hover:not(.disabled) {
+        text-decoration: underline;
+      }
+      
+      &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  :host {
+    --ion-background-color: #121212;
+    --ion-text-color: #ffffff;
+  }
+  
+  ion-card {
+    --background: #1e1e1e;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  ion-input {
+    --background: #2d2d2d;
+    --color: #ffffff;
+    --placeholder-color: #a0a0a0;
+    border-color: #444;
+  }
+
+  ion-label[position="floating"] {
+    color: #a0a0a0;
+  }
+
+  .opciones {
+    color: #4c8dff !important;
+  }
 }

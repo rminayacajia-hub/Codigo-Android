@@ -4,16 +4,28 @@ import { Preferences } from '@capacitor/preferences';
 // importar el toast comtroller
 import { ToastController } from '@ionic/angular';
 // importar htppcliente y htppHeaders
-import { HttpClient  } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
 export class Acceso {
   // declarar variable tipo strig para almacenar el local host
-  server: string  ="http://localhost:8080/WSAGENDA26/agenda.php"
+  server: string  ="http://localhost:8080/WSAGENDA26/datos/persona.php"
   
   // creacion del constructur // y se crea la variable para el toast dentro del constructor
-constructor(public toastCtrl: ToastController){}
+constructor(public toastCtrl: ToastController, public http:HttpClient){
+
+}
+
+// crear metodo enviar datos
+enviarDatos(cuerpo:any){
+  // armar las cabeceras
+  let head=new HttpHeaders({'Content-Type': 'application/json, charser:ttf8'})
+  let opciones={
+    headers:head
+  }
+  return this.http.post(this.server, JSON.stringify(cuerpo), opciones)
+}
 
 // creacion del metodo toast
 async mostrarToast(mensaje:string, tiempo:number){
@@ -43,5 +55,5 @@ async obtenerSesion(id:string){
 async cerrarSesion(){
     await Preferences.clear()
   }
-//
+
 }
