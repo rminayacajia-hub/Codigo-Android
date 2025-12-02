@@ -24,14 +24,14 @@ login(){
     usuario:this.txt_usuario,
     clave:this.txt_clave
   }
-  this.servicio.enviarDatos(datos).subscribe((res:any)=>{
+  this.servicio.enviarDatos(datos,"persona").subscribe((res:any)=>{
     if(res.estado){
       //this.servicio.mostrarToast('idpersona: '+res.codigo,3000)
       this.servicio.crearSesion('idpersona',res.codigo)
       this.navCtrl.navigateRoot(['/menu'])
     }
     else{
-      this.servicio.mostrarToast(res.codigo,3000)
+      this.servicio.mostrarToast(res.mensaje,3000)
     } 
   })
 }
@@ -42,13 +42,13 @@ crearCuenta(){
     usuario:this.txt_usuario,
     clave:this.txt_clave
   }
-  this.servicio.enviarDatos(datos).subscribe((res:any)=>{
+  this.servicio.enviarDatos(datos, "persona").subscribe((res:any)=>{
     if(res.estado){
       this.servicio.crearSesion('idpersona',res.codigo)
       this.navCtrl.navigateRoot(['/home'])
     }
     else{
-      this.servicio.mostrarToast(res.codigo,3000)
+      this.servicio.mostrarToast(res.mensaje,3000)
     } 
   })
 }
@@ -58,13 +58,13 @@ recuperar(){
     usuario:this.txt_usuario,
     clave:this.txt_clave
   }
-  this.servicio.enviarDatos(datos).subscribe((res:any)=>{
+  this.servicio.enviarDatos(datos,"persona").subscribe((res:any)=>{
     if(res.estado){
       this.servicio.crearSesion('idpersona',res.codigo)
       this.navCtrl.navigateRoot(['/home'])
     }
     else{
-      this.servicio.mostrarToast(res.codigo,3000)
+      this.servicio.mostrarToast(res.mensaje,3000)
     } 
   })
 }

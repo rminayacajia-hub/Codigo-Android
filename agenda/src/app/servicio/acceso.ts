@@ -10,7 +10,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class Acceso {
   // declarar variable tipo strig para almacenar el local host
-  server: string  ="http://localhost:8080/WSAGENDA26/datos/persona.php"
+  persona: string  ="http://localhost:8080/WSAGENDA26/datos/persona.php"
+  contacto: string  ="http://localhost:8080/WSAGENDA26/datos/contacto.php"
+  server:string=""
   
   // creacion del constructur // y se crea la variable para el toast dentro del constructor
 constructor(public toastCtrl: ToastController, public http:HttpClient){
@@ -18,9 +20,16 @@ constructor(public toastCtrl: ToastController, public http:HttpClient){
 }
 
 // crear metodo enviar datos
-enviarDatos(cuerpo:any){
+enviarDatos(cuerpo:any, tabla:string){
+  if  (tabla=='persona'){
+    this.server=this.persona
+  }
+  else{
+    this.server=this.contacto
+  }
+ 
   // armar las cabeceras
-  let head=new HttpHeaders({'Content-Type': 'application/json, charser:ttf8'})
+  let head=new HttpHeaders({'Content-Type': 'application/json;charset=utf-8'})
   let opciones={
     headers:head
   }
